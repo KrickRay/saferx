@@ -2,7 +2,7 @@
 
 "Safe" extensions and utilities for the [RxJS](https://github.com/ReactiveX/rxjs):
 
--   [Callable Subject](./packages/callable-subject) - subjects that can be called
+-   [Callable Subject](https://github.com/KrickRay/saferx/tree/main/packages/callable-subject) - subjects that can be called
 
 ## Installation
 
@@ -20,7 +20,7 @@ npm i @saferx/<LIBRARY_NAME>
 
 ## Usage
 
-Full demo available in [packages/saferx/demo](./packages/saferx/demo)
+Full demo available in [packages/saferx/demo](https://github.com/KrickRay/saferx/tree/main/packages/saferx/demo)
 
 ```ts
 import { CallableSubject } from "saferx";
@@ -42,7 +42,7 @@ user.user$.subscribe(console.log);
 user.loadUser({ id: 1 });
 ```
 
-Examples with specific libraries are available in the ["ReadMe" of these packages](./packages)
+Examples with specific libraries are available in the ["ReadMe" of these packages](https://github.com/KrickRay/saferx/tree/main/packages)
 
 ## Contributing
 

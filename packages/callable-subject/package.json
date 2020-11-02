@@ -1,5 +1,7 @@
 {
   "name": "@saferx/callable-subject",
+  "description": "Subjects that can be called",
+  "keywords": ["RxJS", "Callable Subject", "CallableSubject", "Subject", "ReplaySubject", "AsyncSubject", "BehaviorSubject", "extension", "util"],
   "version": "0.1.0",
   "main": "lib/index.js",
   "types": "lib/index.d.js",
@@ -7,6 +9,11 @@
   "author": {
     "name": "Rinat Arsaev",
     "email": "krickray@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KrickRay/saferx.git",
+    "directory": "packages/callable-subject"
   },
   "scripts": {
     "test": "jest",
