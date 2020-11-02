@@ -1,5 +1,7 @@
 # SafeRx
 
+![npm](https://img.shields.io/npm/v/saferx)
+
 "Safe" extensions and utilities for the [RxJS](https://github.com/ReactiveX/rxjs):
 
 -   [Callable Subject](https://github.com/KrickRay/saferx/tree/main/packages/callable-subject) - subjects that can be called

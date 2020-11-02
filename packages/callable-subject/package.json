@@ -25,6 +25,7 @@
     "url": "https://github.com/KrickRay/saferx.git",
     "directory": "packages/callable-subject"
   },
+  "homepage": "https://github.com/KrickRay/saferx/tree/main/packages/callable-subject",
   "scripts": {
     "test": "jest",
     "watch": "jest --watch",

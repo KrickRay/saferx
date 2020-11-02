@@ -1,11 +1,15 @@
 # Callable Subject
 
+![npm](https://img.shields.io/npm/v/@saferx/callable-subject)
+
 [Subjects](https://rxjs-dev.firebaseapp.com/guide/subject) that can be called:
 
 -   CallableSubject
 -   CallableReplaySubject
 -   CallableAsyncSubject
 -   CallableBehaviorSubject
+
+> [Other "safe" extensions and utilities for RxJS](https://github.com/KrickRay/saferx)
 
 ## Installation
 
