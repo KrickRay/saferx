@@ -1,6 +1,6 @@
 # Callable Subject
 
-![npm](https://img.shields.io/npm/v/@saferx/callable-subject)
+[![npm version](https://badge.fury.io/js/%40saferx%2Fcallable-subject.svg)](https://badge.fury.io/js/%40saferx%2Fcallable-subject)
 
 [Subjects](https://rxjs-dev.firebaseapp.com/guide/subject) that can be called:
 

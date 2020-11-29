@@ -1,6 +1,6 @@
 # Safe operators
 
-![npm](https://img.shields.io/npm/v/@saferx/safe)
+[![npm version](https://badge.fury.io/js/%40saferx%2Fcallable-subject.svg)](https://badge.fury.io/js/%40saferx%2Fsafe)
 
 Materialize start and end of operator
 

@@ -1,6 +1,6 @@
 # SafeRx
 
-![npm](https://img.shields.io/npm/v/saferx)
+[![npm version](https://badge.fury.io/js/saferx.svg)](https://badge.fury.io/js/saferx)
 
 "Safe" extensions and utilities for the [RxJS](https://github.com/ReactiveX/rxjs):
 

@@ -1,6 +1,6 @@
 # Multi Observable
 
-![npm](https://img.shields.io/npm/v/@saferx/multi-observable)
+[![npm version](https://badge.fury.io/js/%40saferx%2Fcallable-subject.svg)](https://badge.fury.io/js/%40saferx%2Fmulti-observable)
 
 Wrapper for several observables at once
 
