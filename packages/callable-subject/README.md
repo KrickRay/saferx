@@ -37,16 +37,7 @@ callableSubject.pipe(map((v) => v + 1)).subscribe((v) => console.log(v)); // log
 -   Better to pass an object to know the names of the parameters:
 
     ```ts
-    const loadUser = CallableSubject<{ id: number }>();
+    const loadUser = new CallableSubject<{ id: number }>();
     // clearer than
-    const loadUser = CallableSubject<number>(); // here it is not clear what is the argument "number"
-    ```
-
--   When used with classes, it is better to separate CallableSubject and the function to call
-
-    ```ts
-    class User {
-        private loadUser$ = CallableSubject<{ id: number }>();
-        loadUser = this.loadUser$.next; // next already binded
-    }
+    const loadUser = new CallableSubject<number>(); // here it is not clear what is the argument "number"
     ```
