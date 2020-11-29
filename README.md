@@ -5,6 +5,8 @@
 "Safe" extensions and utilities for the [RxJS](https://github.com/ReactiveX/rxjs):
 
 -   [Callable Subject](https://github.com/KrickRay/saferx/tree/main/packages/callable-subject) - subjects that can be called
+-   [Multi Observable](https://github.com/KrickRay/saferx/tree/main/packages/multi-observable) - wrapper for several observables at once
+-   [Safe operators](https://github.com/KrickRay/saferx/tree/main/packages/safe) - materialize start and end of operator
 
 ## Installation
 
@@ -25,21 +27,29 @@ npm i @saferx/<LIBRARY_NAME>
 Full demo available in [packages/saferx/demo](https://github.com/KrickRay/saferx/tree/main/packages/saferx/demo)
 
 ```ts
-import { CallableSubject } from "saferx";
-import { shareReplay, switchMap } from "rxjs/operators";
+import { CallableSubject, toMultiObservable, safeSwitchMap, withInProgress } from "saferx";
+import { shareReplay } from "rxjs/operators";
 
-import { api } from "./api";
+import { api, API } from "./api";
 
 export class UserService {
-    loadUser = new CallableSubject<{ id: number }>(); // @saferx/callable-subject
+    loadUser = new CallableSubject<{ id: number }>();
 
-    user$ = this.loadUser.pipe(
-        switchMap(({ id }) => api.loadUser(id)),
-        shareReplay(1)
+    user$ = toMultiObservable(
+        this.loadUser.pipe(
+            safeSwitchMap(({ id }) => this.api.loadUser(id)),
+            withInProgress,
+            shareReplay(1)
+        )
     );
+
+    userError$ = this.user$.get("error");
+    userInProgress$ = this.user$.get("inProgress");
+
+    constructor(private api: API) {}
 }
 
-const user = new UserService();
+const user = new UserService(api);
 user.user$.subscribe(console.log);
 user.loadUser({ id: 1 });
 ```

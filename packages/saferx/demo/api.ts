@@ -4,7 +4,14 @@ export interface User {
     email: string;
 }
 
-export const api = {
-    loadUser: (id: number) =>
-        new Promise<User>((res) => setTimeout(() => res({ id, name: "Test", email: "test@tes.t" }), 100)),
-};
+export class API {
+    loadUser(id: number) {
+        return this.request({ id, name: "Test", email: "test@tes.t" });
+    }
+
+    private request<T>(v: T) {
+        return new Promise<T>((res) => setTimeout(() => res(v), 100));
+    }
+}
+
+export const api = new API();

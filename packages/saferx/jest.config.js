@@ -1,1 +1,2 @@
-module.exports = require("../../jest.config");
+const { roots, ...config } = require("../../jest.config");
+module.exports = Object.assign(config, { roots: roots.concat(["demo"]) });
