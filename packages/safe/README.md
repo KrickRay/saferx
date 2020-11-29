@@ -1,5 +1,7 @@
 # Safe operators
 
+![npm](https://img.shields.io/npm/v/@saferx/safe)
+
 Materialize start and end of operator
 
 Contains ready-made operators:
@@ -14,6 +16,8 @@ Contains ready-made operators:
     -   `error`
     -   `progress`
     -   `inProgress`
+
+> [Other "safe" extensions and utilities for RxJS](https://github.com/KrickRay/saferx)
 
 ## Installation
 

@@ -1,6 +1,10 @@
 # Multi Observable
 
+![npm](https://img.shields.io/npm/v/@saferx/multi-observable)
+
 Wrapper for several observables at once
+
+> [Other "safe" extensions and utilities for RxJS](https://github.com/KrickRay/saferx)
 
 ## Installation
 
