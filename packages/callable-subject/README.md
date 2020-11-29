@@ -9,6 +9,10 @@
 -   CallableAsyncSubject
 -   CallableBehaviorSubject
 
+Rather, like a Subject. Is not a true extension of the Subject.
+
+Accessible methods: `pipe`, `subscribe`, `complete`, `next` and `source$` (source Subject)
+
 > [Other "safe" extensions and utilities for RxJS](https://github.com/KrickRay/saferx)
 
 ## Installation
@@ -36,4 +40,13 @@ callableSubject.pipe(map((v) => v + 1)).subscribe((v) => console.log(v)); // log
     const loadUser = CallableSubject<{ id: number }>();
     // clearer than
     const loadUser = CallableSubject<number>(); // here it is not clear what is the argument "number"
+    ```
+
+-   When used with classes, it is better to separate CallableSubject and the function to call
+
+    ```ts
+    class User {
+        private loadUser$ = CallableSubject<{ id: number }>();
+        loadUser = this.loadUser$.next; // next already binded
+    }
     ```

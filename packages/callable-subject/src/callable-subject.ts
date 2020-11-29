@@ -1,6 +1,6 @@
 import { AsyncSubject, BehaviorSubject, ReplaySubject, SchedulerLike, Subject } from "rxjs";
 
-const SUBJECT_METHODS = ["pipe", "subscribe", "complete"] as const;
+const SUBJECT_METHODS = ["pipe", "subscribe", "complete", "next"] as const;
 
 type CallableSubjectInstance<S extends Subject<any>> = S["next"] & { subject$: S } & {
         [N in typeof SUBJECT_METHODS[number]]: S[N];
