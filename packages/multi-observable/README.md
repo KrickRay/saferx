@@ -18,5 +18,5 @@ npm i @saferx/multi-observable
 import { MultiObservable } from "@saferx/multi-observable";
 
 const multiObservableName$ = new MultiObservable(of({ name: "Test", age: 20 }), "name"); // return only 'name': 'Test'
-const age$ = name$.get("age"); // return only 'age': 20
+const age$ = multiObservableName$.get("age"); // return only 'age': 20
 ```

@@ -28,21 +28,21 @@ npm i @saferx/safe
 ## Usage
 
 ```ts
-import { CallableSubject } from "@saferx/callable-subject";
+import { safeSwitchMap, toValue, toError, selectInProgress } from "@saferx/safe";
 
 const safeObeservable$ = of(0).pipe(
     safeSwitchMap(() => of(1)),
     withInProgress
 );
 const value$ = safeObeservable$.pipe(toValue);
-const error$ = safeMultiObeservable$.get("error");
+const error$ = safeMultiObeservable$.pipe(toError);
 const inProgress$ = safeObeservable$.pipe(selectInProgress);
 ```
 
 ### With toObservable
 
 ```ts
-import { CallableSubject } from "@saferx/callable-subject";
+import { safeSwitchMap, toMultiObservable } from "@saferx/safe";
 
 const safeMultiObeservable$ = toMultiObservable(
     of(0).pipe(
