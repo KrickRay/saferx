@@ -11,6 +11,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
+    "test": "lerna run test",
     "clean": "shx rm -rf **/node_modules",
     "release": "lerna run build & lerna publish --no-commit-hooks"
   },

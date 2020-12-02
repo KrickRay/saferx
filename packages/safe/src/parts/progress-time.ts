@@ -1,14 +1,14 @@
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { getPart } from "../get-part";
-import { Safe, ExtendSafe, SafeType } from "../safe";
+import { select } from "../utils";
+import { Safe, SafeType } from "../safe";
 
 export const START_TIME_KEY = "startTime" as const;
 export const TIME_KEY = "time" as const;
 
-export function withStartCompleteTime<S extends Safe>(
-    src$: Observable<S>
-): Observable<ExtendSafe<S, { [START_TIME_KEY]: number; [TIME_KEY]: number }>> {
+export function withStartCompleteTime<A, B, C>(
+    src$: Observable<Safe<A, B, C>>
+): Observable<Safe<A, B, C & { [START_TIME_KEY]: number; [TIME_KEY]: number }>> {
     return src$.pipe(
         map((v) => {
             v.add(START_TIME_KEY);
@@ -20,8 +20,8 @@ export function withStartCompleteTime<S extends Safe>(
     ) as any;
 }
 
-export const selectStartTime = getPart(START_TIME_KEY);
-export const selectCompleteTime = getPart(TIME_KEY);
+export const selectStartTime = select(START_TIME_KEY);
+export const selectCompleteTime = select(TIME_KEY);
 
 export const toStartTime = <S extends Safe>(src$: Observable<S>) => src$.pipe(withStartCompleteTime, selectStartTime);
 export const toCompleteTime = <S extends Safe>(src$: Observable<S>) =>

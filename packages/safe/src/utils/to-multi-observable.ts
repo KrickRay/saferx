@@ -1,8 +1,8 @@
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { MultiObservable } from "@saferx/multi-observable";
-import { isError, isValue } from "./parts";
-import { Safe } from "./safe";
+import { isError, isValue } from "../parts";
+import { Safe } from "../safe";
 
 /**
  * Safe to MultiObservable

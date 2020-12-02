@@ -1,14 +1,14 @@
 import { Observable } from "rxjs";
 import { distinctUntilChanged, map } from "rxjs/operators";
-import { Safe, ExtendSafe } from "../safe";
-import { getPart } from "../get-part";
+import { Safe } from "../safe";
+import { select } from "../utils";
 import { PROGRESS_KEY, withProgress } from "./progress";
 
 export const IN_PROGRESS_KEY = "inProgress" as const;
 
-export function withInProgress<S extends Safe>(
-    src$: Observable<S>
-): Observable<ExtendSafe<S, { [IN_PROGRESS_KEY]: boolean }>> {
+export function withInProgress<A, B, C>(
+    src$: Observable<Safe<A, B, C>>
+): Observable<Safe<A, B, C & { [IN_PROGRESS_KEY]: boolean }>> {
     return src$.pipe(
         withProgress,
         map((v) =>
@@ -17,7 +17,7 @@ export function withInProgress<S extends Safe>(
     ) as any;
 }
 
-export const selectInProgress = getPart(IN_PROGRESS_KEY);
+export const selectInProgress = select(IN_PROGRESS_KEY);
 
 export const toInProgress = <S extends Safe>(src$: Observable<S>) =>
     src$.pipe(withInProgress, selectInProgress, distinctUntilChanged());

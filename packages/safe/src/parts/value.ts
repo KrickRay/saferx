@@ -9,3 +9,5 @@ export function isValue<R>(safe: Safe<any, R>): boolean {
 export function toValue<R>(src$: Observable<Safe<any, R>>): Observable<R> {
     return src$.pipe(filter(isValue), pluck("value"));
 }
+
+export const selectValue = toValue;

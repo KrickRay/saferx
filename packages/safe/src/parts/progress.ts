@@ -1,13 +1,13 @@
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
-import { getPart } from "../get-part";
-import { Safe, ExtendSafe, SafeType } from "../safe";
+import { select } from "../utils";
+import { Safe, SafeType } from "../safe";
 
 export const PROGRESS_KEY = "progress" as const;
 
-export function withProgress<S extends Safe>(
-    src$: Observable<S>
-): Observable<ExtendSafe<S, { [PROGRESS_KEY]: number }>> {
+export function withProgress<A, B, C>(
+    src$: Observable<Safe<A, B, C>>
+): Observable<Safe<A, B, C & { [PROGRESS_KEY]: number }>> {
     let progress = 0;
     return src$.pipe(
         map((v) => {
@@ -24,6 +24,6 @@ export function withProgress<S extends Safe>(
     ) as any;
 }
 
-export const selectProgress = getPart(PROGRESS_KEY);
+export const selectProgress = select(PROGRESS_KEY);
 
 export const toProgress = <S extends Safe>(src$: Observable<S>) => src$.pipe(withProgress, selectProgress);

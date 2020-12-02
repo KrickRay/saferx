@@ -12,10 +12,13 @@ Contains ready-made operators:
     -   `safeMergeMap`
     -   `safeExhaustMap`
 -   Part operators - ready-made data-enriching operators:
-    -   `payload`
+    -   `value`
     -   `error`
     -   `progress`
     -   `inProgress`
+-   Utils
+    -   `toMultiObservable` operator - convert to MultiObservable
+    -   `select` operator - part selection
 
 > [Other "safe" extensions and utilities for RxJS](https://github.com/KrickRay/saferx)
 
@@ -28,28 +31,34 @@ npm i @saferx/safe
 ## Usage
 
 ```ts
-import { safeSwitchMap, toValue, toError, selectInProgress } from "@saferx/safe";
+import { safeSwitchMap, selectValue, selectError, selectInProgress, withInProgress } from "@saferx/safe";
+import { of } from "rxjs";
 
-const safeObeservable$ = of(0).pipe(
-    safeSwitchMap(() => of(1)),
+const helloWorld$ = of("Hello").pipe(
+    safeSwitchMap((name) => of(`${name}, world!`)),
     withInProgress
 );
-const value$ = safeObeservable$.pipe(toValue);
-const error$ = safeMultiObeservable$.pipe(toError);
-const inProgress$ = safeObeservable$.pipe(selectInProgress);
+
+const value$ = helloWorld$.pipe(selectValue); // return: Hello, world!
+const error$ = helloWorld$.pipe(selectError); // return nothing
+const inProgress$ = helloWorld$.pipe(selectInProgress); // return: false, true, false
 ```
 
 ### With toObservable
 
 ```ts
-import { safeSwitchMap, toMultiObservable } from "@saferx/safe";
+import { safeSwitchMap, withProgress, toMultiObservable, withInProgress } from "@saferx/safe";
+import { of } from "rxjs";
 
-const safeMultiObeservable$ = toMultiObservable(
-    of(0).pipe(
-        safeSwitchMap(() => of(1)),
-        withInProgress
-    )
-); // is the value$
-const error$ = safeMultiObeservable$.get("error");
-const inProgress$ = safeMultiObeservable$.get("inProgress");
+class Hello {
+    helloWorld$ = toMultiObservable(
+        of("world").pipe(
+            safeSwitchMap((name) => of(`Hello, ${name}!`)),
+            withProgress,
+            withInProgress
+        )
+    ); // the value$
+    error$ = this.helloWorld$.get("value");
+    progress$ = this.helloWorld$.get("progress"); // `select` - universal part selection
+}
 ```

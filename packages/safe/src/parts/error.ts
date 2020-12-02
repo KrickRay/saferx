@@ -9,3 +9,5 @@ export function isError(safe: Safe): boolean {
 export function toError(src$: Observable<Safe>): Observable<any> {
     return src$.pipe(filter(isError), pluck("error"));
 }
+
+export const selectError = toError;

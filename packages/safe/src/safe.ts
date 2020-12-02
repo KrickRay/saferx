@@ -11,7 +11,7 @@ export enum SafeType {
 }
 
 export type SafePart<T extends PropertyKey = PropertyKey, V = any> = {
-    [N in T]?: V;
+    [N in T]: V;
 };
 
 export class Safe<S = any, R = any, T extends SafePart = {}> {
@@ -79,10 +79,6 @@ export class Safe<S = any, R = any, T extends SafePart = {}> {
 }
 
 export type PartsObject<S extends Safe<any, any, any>> = S extends Safe<any, any, infer T> ? T : never;
-
-export type ExtendSafe<S extends Safe, P extends SafePart> = S extends Safe<infer A, infer B, infer C>
-    ? Safe<A, B, C & Partial<P>>
-    : never;
 
 /**
  * Make safe operator
