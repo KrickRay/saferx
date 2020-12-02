@@ -6,7 +6,7 @@
     "extension",
     "util"
   ],
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "lib/index.js",
   "types": "lib/index.d.js",
   "license": "MIT",
