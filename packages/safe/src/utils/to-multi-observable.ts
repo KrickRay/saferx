@@ -7,10 +7,8 @@ import { Safe } from "../safe";
 /**
  * Safe to MultiObservable
  */
-export function toMultiObservable<S extends Safe>(
-    src$: Observable<S>
-): S extends Safe<any, infer V, infer P> ? MultiObservable<"value", P & { value: V; error: any }> : never {
-    return new MultiObservable(
+export function toMultiObservable<R, P>(src$: Observable<Safe<any, R, P>>) {
+    return new MultiObservable<"value", P & { value: R; error: any }>(
         src$.pipe(
             map((safe: any) =>
                 Object.assign(
@@ -21,5 +19,5 @@ export function toMultiObservable<S extends Safe>(
                 )
             )
         )
-    ) as any;
+    );
 }
