@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/KrickRay/saferx/compare/@saferx/safe@0.3.0...@saferx/safe@0.3.1) (2020-12-19)
+
+
+### Bug Fixes
+
+* update typings and demo ([d7adf1b](https://github.com/KrickRay/saferx/commit/d7adf1bb70337696baf5d751d9d3d58081270807))
+
+
+
+
+
 # [0.3.0](https://github.com/KrickRay/saferx/compare/@saferx/safe@0.2.1...@saferx/safe@0.3.0) (2020-12-02)
 
 

@@ -6,7 +6,7 @@
     "extension",
     "util"
   ],
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "lib/index.js",
   "types": "lib/index.d.js",
   "license": "MIT",
@@ -33,6 +33,6 @@
   "dependencies": {
     "@saferx/callable-subject": "^0.2.1",
     "@saferx/multi-observable": "^0.3.0",
-    "@saferx/safe": "^0.3.0"
+    "@saferx/safe": "^0.3.1"
   }
 }
