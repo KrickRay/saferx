@@ -6,7 +6,7 @@ import { toTestSafe, VALUES } from "./test-common";
 
 const { marbleAssert } = rxSandbox;
 
-describe("stripSwitchMap", () => {
+describe("safeSwitchMap", () => {
     const SIMPLE_SAFE_SWITCH_MAP = safeSwitchMap<any, any>((v) => of(v));
 
     it("Should init and complete", () => {
@@ -63,9 +63,7 @@ describe("stripSwitchMap", () => {
     it("Should switched & complete first emition when double next with double emitions with delays", () => {
         const { hot, getMessages, e, scheduler } = rxSandbox.create(true);
         const actual = hot("-a-a...100...|").pipe(
-            safeSwitchMap((v) =>
-                merge(of(v), of("x").pipe(delay(5, scheduler)))
-            ),
+            safeSwitchMap((v) => merge(of(v), of("x").pipe(delay(5, scheduler)))),
             toTestSafe
         );
         const expected = e("i(ab)-(acb)----(xc)-...94...|", VALUES);

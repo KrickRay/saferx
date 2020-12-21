@@ -1,6 +1,6 @@
 import { merge, Notification } from "rxjs";
 import { OperatorFunction } from "rxjs/internal/types";
-import { map, materialize, startWith } from "rxjs/operators";
+import { map, materialize, publish, startWith } from "rxjs/operators";
 
 export enum SafeType {
     Initialize = "Initialize",
@@ -88,12 +88,15 @@ export function makeOperatorSafe<F extends (...args: any[]) => OperatorFunction<
 ): F {
     return ((...args: Parameters<F>) => {
         const operator = operatorFn(...args);
-        return (src$) => {
-            const safeStart$ = src$.pipe(map((startValue) => new Safe({ type: SafeType.Start, startValue })));
-            return merge(safeStart$, safeStart$.pipe(operator)).pipe(
-                startWith(new Safe({ type: SafeType.Initialize }))
+        return (src$) =>
+            src$.pipe(
+                map((startValue) => new Safe({ type: SafeType.Start, startValue })),
+                publish((multicasted$) =>
+                    merge(multicasted$, multicasted$.pipe(operator)).pipe(
+                        startWith(new Safe({ type: SafeType.Initialize }))
+                    )
+                )
             );
-        };
     }) as F;
 }
 

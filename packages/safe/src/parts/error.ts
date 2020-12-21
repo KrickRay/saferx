@@ -6,7 +6,7 @@ export function isError(safe: Safe): boolean {
     return safe.type === SafeType.Error;
 }
 
-export function toError(src$: Observable<Safe>): Observable<any> {
+export function toError(src$: Observable<Safe<any, any, any>>): Observable<any> {
     return src$.pipe(filter(isError), pluck("error"));
 }
 

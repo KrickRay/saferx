@@ -1,9 +1,11 @@
-import { of, throwError } from "rxjs";
+import { of, Subject, throwError } from "rxjs";
 import { rxSandbox } from "rx-sandbox";
 import { safeConcatMap } from "./safe-concat-map";
 import { toTestSafe, VALUES } from "./test-common";
+import { share, startWith } from "rxjs/operators";
+import { selectValue, withInProgress } from "../parts";
 
-describe("stripConcatMap", () => {
+describe("safeConcatMap", () => {
     const SIMPLE_SAFE_CONCAT_MAP: any = safeConcatMap((v) => of(v));
 
     it("Should init and complete", () => {
@@ -35,5 +37,27 @@ describe("stripConcatMap", () => {
         );
         const expected = e("i(ae)-|", VALUES);
         expect(getMessages(actual)).toEqual(expected);
+    });
+
+    it("Should work with share", (done) => {
+        const action$ = new Subject();
+        action$
+            .pipe(
+                startWith("test"),
+                share(),
+                safeConcatMap(() => of(2)),
+                withInProgress,
+                selectValue
+            )
+            .subscribe(
+                (v) => {
+                    expect(v).toBe(2);
+                    action$.complete();
+                },
+                null,
+                () => {
+                    done();
+                }
+            );
     });
 });
