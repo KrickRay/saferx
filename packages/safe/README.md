@@ -1,6 +1,6 @@
 # Safe operators
 
-[![npm version](https://badge.fury.io/js/%40saferx%2Fcallable-subject.svg)](https://badge.fury.io/js/%40saferx%2Fsafe)
+[![npm version](https://badge.fury.io/js/%40saferx%2Fsafe.svg)](https://badge.fury.io/js/%40saferx%2Fsafe)
 
 Materialize start and end of operator
 
@@ -10,7 +10,7 @@ Contains ready-made operators:
     -   `safeSwitchMap`
     -   `safeConcatMap`
     -   `safeMergeMap`
-    -   `safeExhaustMap`
+    <!-- -   `safeExhaustMap` (TODO) -->
 -   Part operators - ready-made data-enriching operators:
     -   `value`
     -   `error`
