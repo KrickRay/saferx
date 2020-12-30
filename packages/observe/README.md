@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/%40saferx%2Fobserve.svg)](https://badge.fury.io/js/%40saferx%2Fobserve)
 
-Observe class property
+Observe class property to subject
 
 > [Other "safe" extensions and utilities for RxJS](https://github.com/KrickRay/saferx)
 

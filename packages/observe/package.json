@@ -1,6 +1,6 @@
 {
   "name": "@saferx/observe",
-  "description": "Observe class property",
+  "description": "Observe class property to subject",
   "keywords": [
     "observe",
     "subject",

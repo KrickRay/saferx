@@ -7,6 +7,7 @@
 -   [Callable Subject](https://github.com/KrickRay/saferx/tree/main/packages/callable-subject) - subjects that can be called
 -   [Multi Observable](https://github.com/KrickRay/saferx/tree/main/packages/multi-observable) - wrapper for several observables at once
 -   [Safe operators](https://github.com/KrickRay/saferx/tree/main/packages/safe) - materialize start and end of operator
+-   [Observe](https://github.com/KrickRay/saferx/tree/main/packages/observe) - observe class property to subject
 
 ## Installation
 
