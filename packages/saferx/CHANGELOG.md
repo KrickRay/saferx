@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/KrickRay/saferx/compare/saferx@0.3.2...saferx@0.4.0) (2020-12-30)
+
+
+### Features
+
+* **observe:** init ([28f55aa](https://github.com/KrickRay/saferx/commit/28f55aa310955ee0bd961ca82ad51de812217388))
+
+
+
+
+
 ## [0.3.2](https://github.com/KrickRay/saferx/compare/saferx@0.3.1...saferx@0.3.2) (2020-12-19)
 
 

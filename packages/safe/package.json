@@ -10,7 +10,7 @@
     "extension",
     "util"
   ],
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "lib/index.js",
   "types": "lib/index.d.js",
   "license": "MIT",
@@ -34,6 +34,6 @@
     "rxjs": "^6.0.0"
   },
   "dependencies": {
-    "@saferx/multi-observable": "^0.3.0"
+    "@saferx/multi-observable": "^0.3.1"
   }
 }
