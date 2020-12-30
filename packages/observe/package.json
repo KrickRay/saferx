@@ -1,12 +1,14 @@
 {
-  "name": "saferx",
-  "description": "Safe extensions and utilities for the RxJS",
+  "name": "@saferx/observe",
+  "description": "Observe class property",
   "keywords": [
+    "observe",
+    "subject",
     "RxJS",
     "extension",
     "util"
   ],
-  "version": "0.3.2",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "types": "lib/index.d.js",
   "license": "MIT",
@@ -17,23 +19,16 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/KrickRay/saferx.git",
-    "directory": "packages/saferx"
+    "directory": "packages/observe"
   },
-  "homepage": "https://github.com/KrickRay/saferx",
+  "homepage": "https://github.com/KrickRay/saferx/tree/main/packages/observe",
   "scripts": {
     "test": "jest",
     "watch": "jest --watch",
     "clean": "shx rm -rf lib",
-    "build": "yarn clean & tsc -p tsconfig.json & yarn readme",
-    "readme": "shx cp ../../README.md ./"
+    "build": "yarn clean & tsc -p tsconfig-build.json"
   },
   "optionalDependencies": {
     "rxjs": "^6.0.0"
-  },
-  "dependencies": {
-    "@saferx/callable-subject": "^0.2.1",
-    "@saferx/multi-observable": "^0.3.0",
-    "@saferx/safe": "^0.3.1",
-    "@saferx/observe": "^0.1.0"
   }
 }
