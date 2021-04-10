@@ -1,9 +1,9 @@
 import { of, Subject, throwError } from "rxjs";
 import { rxSandbox } from "rx-sandbox";
 import { safeConcatMap } from "./safe-concat-map";
-import { toTestSafe, VALUES } from "./test-common";
+import { toTestSafe, VALUES } from "../test/common";
 import { share, startWith } from "rxjs/operators";
-import { selectValue, withInProgress } from "../parts";
+import { Safe } from "../../safe";
 
 describe("safeConcatMap", () => {
     const SIMPLE_SAFE_CONCAT_MAP: any = safeConcatMap((v) => of(v));
@@ -46,18 +46,16 @@ describe("safeConcatMap", () => {
                 startWith("test"),
                 share(),
                 safeConcatMap(() => of(2)),
-                withInProgress,
-                selectValue
+                Safe.SelectValue()
             )
-            .subscribe(
-                (v) => {
+            .subscribe({
+                next: (v) => {
                     expect(v).toBe(2);
                     action$.complete();
                 },
-                null,
-                () => {
+                complete: () => {
                     done();
-                }
-            );
+                },
+            });
     });
 });

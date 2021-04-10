@@ -1,5 +1,5 @@
 import { map } from "rxjs/operators";
-import { Safe, SafeType } from "../safe";
+import { Safe, SafeType } from "../../safe";
 
 export const EMPTY_TEST_SAFE = {
     type: undefined,

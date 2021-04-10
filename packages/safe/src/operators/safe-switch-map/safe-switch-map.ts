@@ -1,7 +1,7 @@
 import { from, of } from "rxjs";
 import { ObservableInput, OperatorFunction } from "rxjs/internal/types";
 import { switchMap, startWith, pairwise, concatMap } from "rxjs/operators";
-import { makeOperatorSafe, Safe, SafeType, toSafeEnd } from "../safe";
+import { makeOperatorSafe, Safe, SafeType, toSafeEnd } from "../../safe";
 
 const END_PREVENT = Symbol();
 

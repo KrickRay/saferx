@@ -10,15 +10,11 @@ Contains ready-made operators:
     -   `safeSwitchMap`
     -   `safeConcatMap`
     -   `safeMergeMap`
-    <!-- -   `safeExhaustMap` (TODO) -->
+    -   ~~`safeExhaustMap`~~ (TODO)
+    -   `safeMergeScan`
 -   Part operators - ready-made data-enriching operators:
-    -   `value`
-    -   `error`
-    -   `progress`
-    -   `inProgress`
--   Utils
-    -   `toMultiObservable` operator - convert to MultiObservable
-    -   `select` operator - part selection
+    -   `ProgressPart`
+    -   `UpdatedAtPart`
 
 > [Other "safe" extensions and utilities for RxJS](https://github.com/KrickRay/saferx)
 
@@ -31,34 +27,26 @@ npm i @saferx/safe
 ## Usage
 
 ```ts
-import { safeSwitchMap, selectValue, selectError, selectInProgress, withInProgress } from "@saferx/safe";
+import { safeSwitchMap, ProgressPart, UpdatedAtPart, Safe } from "@saferx/safe";
 import { of } from "rxjs";
+import { delay, shareReplay } from "rxjs/operators";
 
-const helloWorld$ = of("Hello").pipe(
-    safeSwitchMap((name) => of(`${name}, world!`)),
-    withInProgress
+const helloWorld$ = of("world").pipe(
+    safeSwitchMap((name) => of(`Hello, ${name}!`).pipe(delay(1000))),
+    ProgressPart.Add(),
+    UpdatedAtPart.Add(),
+    shareReplay(1)
 );
 
-const value$ = helloWorld$.pipe(selectValue); // return: Hello, world!
-const error$ = helloWorld$.pipe(selectError); // return nothing
-const inProgress$ = helloWorld$.pipe(selectInProgress); // return: false, true, false
-```
+helloWorld$.pipe(ProgressPart.Select()).subscribe((value) => console.log("progress:", value));
+helloWorld$.pipe(UpdatedAtPart.Select()).subscribe((value) => console.log("updatedAt:", value));
+helloWorld$.pipe(Safe.SelectValue()).subscribe((value) => console.log("value:", value));
+helloWorld$.pipe(Safe.SelectError()).subscribe((value) => console.log("error:", value));
 
-### With toObservable
-
-```ts
-import { safeSwitchMap, withProgress, toMultiObservable, withInProgress } from "@saferx/safe";
-import { of } from "rxjs";
-
-class Hello {
-    helloWorld$ = toMultiObservable(
-        of("world").pipe(
-            safeSwitchMap((name) => of(`Hello, ${name}!`)),
-            withProgress,
-            withInProgress
-        )
-    ); // the value$
-    error$ = this.helloWorld$.get("value");
-    progress$ = this.helloWorld$.get("progress"); // `select` - universal part selection
-}
+// progress: false
+// progress: true
+// value: Hello, world!
+// progress: false
+// updatedAt: 2021-04-10T22:34:31.790Z
+// error: undefined
 ```

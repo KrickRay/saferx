@@ -2,7 +2,7 @@ import { of, throwError, merge } from "rxjs";
 import { rxSandbox } from "rx-sandbox";
 import { delay } from "rxjs/operators";
 import { safeSwitchMap } from "./safe-switch-map";
-import { toTestSafe, VALUES } from "./test-common";
+import { toTestSafe, VALUES } from "../test/common";
 
 const { marbleAssert } = rxSandbox;
 
